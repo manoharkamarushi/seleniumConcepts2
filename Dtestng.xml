@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DSuite">
+		<listener class-name="testng4.CustomListeners"> </listener>
+  <test name="DTest">
+    <classes>
+      <class name="testng4.Dependency"/>
+    </classes>
+  </test> <!-- DTest -->
+</suite> <!-- DSuite -->

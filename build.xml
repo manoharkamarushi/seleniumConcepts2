@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project default="main" basedir=".">
+<path id="classpath1">
+<fileset dir="d:\TESTING" includes="**/*.jar"/>
+<pathelement location="bin"/>
+</path>
+<taskdef classname="org.testng.TestNGAntTask" name="mytestng">
+<classpath>
+<pathelement location="d:/TESTING\testng.jar"/>
+</classpath>
+</taskdef>
+<target name="clean">
+<delete dir="bin"/>
+<delete dir="rpt"/>
+<delete dir="rptng"/>
+</target>
+<target name="compile" depends="clean">
+<mkdir dir="bin"/>
+<mkdir dir="rpt"/>
+<mkdir dir="rptng"/>
+<javac includeantruntime="false" classpathref="classpath1" destdir="bin" srcdir="src"/>
+<copy todir="./bin" file="log4j.properties"/>
+</target>
+<!--target name="jar"> <mkdir dir="jar"/> <jar destfile="/jar/Test.jar" basedir="bin"> <manifest> <attribute name="Main-Class" value="Test"/> </manifest> </jar> </target-->
+<target name="run">
+<java classname="testNG3.Buttons_find.java" fork="true" classpath="bin"/>
+</target>
+<target name="rjunit">
+<junit haltonfailure="no" haltonerror="no" printsummary="yes">
+<classpath refid="classpath1"/>
+<formatter usefile="false" type="plain"/>
+<formatter type="xml"/>
+<batchtest todir="rpt">
+<fileset dir="src">
+<include name="**/*example1.java"/>
+</fileset>
+</batchtest>
+</junit>
+</target>
+<target name="NGtest">
+<mytestng classpathref="classpath1" outputdir="rptng">
+<xmlfileset dir="." includes="TestNG.xml"/>
+</mytestng>
+</target>
+<target name="report">
+<junitreport todir="rpt">
+<fileset dir="rpt" includes="TEST-*.xml"/>
+<report todir="rpt"/>
+</junitreport>
+</target>
+<target name="main" depends="clean, compile, run, rjunit, NGtest, report"> </target>
+</project>

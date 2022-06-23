@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="GSuite">
+  <test name="GTest">
+  <groups>
+	   <define name="all">
+	   			<include name="Retesting"></include>
+	   			<include name="Regressiontesting"></include>
+	    </define>
+	    <run>
+	    		<include name="Retesting"></include>
+	    		<exclude name="Regressiontesting"></exclude>
+	    </run>	
+	</groups>
+    <classes>
+      <class name="testng4.TestNG_grouping"/>
+    </classes>
+  </test> <!-- GTest -->
+</suite> <!-- GSuite -->

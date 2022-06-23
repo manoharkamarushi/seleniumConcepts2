@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="browser Suite">
+  
+  <test name="browser Test">
+   <parameter name="browser" value="firefox"/>
+   
+    <classes>
+  			<class name="testng4.parameters_crossbrowser_testing"/>
+	</classes>
+    </test> <!-- browser Test -->
+    
+  <test name="browser Test">
+<parameter name="browser" value="chrome"/>
+<classes>
+		< class name="testng4.parameters_crossbrowser_testing"/>
+</classes>
+</test>
+  
+  
+  
+</suite> <!-- browser Suite -->
